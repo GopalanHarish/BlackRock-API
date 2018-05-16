@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BlackRockModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Benchmarks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InvestmentGoals">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InvestmentHorizones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Navigations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Url" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="FontAwesome" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AssignedToUserRole" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PhysicalPaths">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BaseUrl" Type="nvarchar" MaxLength="150" />
+    <Property Name="Identifier" Type="nvarchar" MaxLength="50" />
+    <Property Name="DefaultImageUrl" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Risks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RiskLabel" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SchemeCategories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SchemePlans">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Schemes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="SchemeTypeId" Type="bigint" Nullable="false" />
+    <Property Name="SchemeCategoryId" Type="bigint" Nullable="false" />
+    <Property Name="SchemePlanId" Type="bigint" Nullable="false" />
+    <Property Name="RiskId" Type="bigint" Nullable="false" />
+    <Property Name="BenchmarkId" Type="bigint" Nullable="false" />
+    <Property Name="HorizoneId" Type="bigint" Nullable="false" />
+    <Property Name="GoalId" Type="bigint" Nullable="false" />
+    <Property Name="MinLumpsumAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="MinSipAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ExpenseRatio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AUM" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="InceptionDate" Type="datetime" Nullable="false" />
+    <Property Name="EntryLoad" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ExitLoad" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="FundManagerId" Type="bigint" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="IsOpenEndedFund" Type="bit" Nullable="false" />
+    <Property Name="QuandlCode" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="isGrowth" Type="bit" Nullable="false" />
+    <Property Name="isDividend" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="bigint" Nullable="false" />
+    <Property Name="ManagingSince" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SchemeTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Transactions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="SchemeId" Type="bigint" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Units" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TransactionType" Type="bigint" Nullable="false" />
+    <Property Name="TransactionDate" Type="datetime" Nullable="false" />
+    <Property Name="InvestmentType" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TransactionTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ContactNumber" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RegisteredOn" Type="datetime" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastLoggedOn" Type="datetime" />
+    <Property Name="RoleId" Type="bigint" Nullable="false" />
+    <Property Name="Bio" Type="nvarchar" MaxLength="4000" />
+    <Property Name="ImageUrl" Type="nvarchar" MaxLength="150" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Schemes_Benchmarks">
+    <End Role="Benchmarks" Type="Self.Benchmarks" Multiplicity="1" />
+    <End Role="Schemes" Type="Self.Schemes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Benchmarks">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Schemes">
+        <PropertyRef Name="BenchmarkId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schemes_InvestmentGoals">
+    <End Role="InvestmentGoals" Type="Self.InvestmentGoals" Multiplicity="1" />
+    <End Role="Schemes" Type="Self.Schemes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InvestmentGoals">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Schemes">
+        <PropertyRef Name="GoalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schemes_InvestmentHorizones">
+    <End Role="InvestmentHorizones" Type="Self.InvestmentHorizones" Multiplicity="1" />
+    <End Role="Schemes" Type="Self.Schemes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InvestmentHorizones">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Schemes">
+        <PropertyRef Name="HorizoneId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schemes_Risks">
+    <End Role="Risks" Type="Self.Risks" Multiplicity="1" />
+    <End Role="Schemes" Type="Self.Schemes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Risks">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Schemes">
+        <PropertyRef Name="RiskId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schemes_SchemeCategories">
+    <End Role="SchemeCategories" Type="Self.SchemeCategories" Multiplicity="1" />
+    <End Role="Schemes" Type="Self.Schemes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SchemeCategories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Schemes">
+        <PropertyRef Name="SchemeCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schemes_SchemePlans">
+    <End Role="SchemePlans" Type="Self.SchemePlans" Multiplicity="1" />
+    <End Role="Schemes" Type="Self.Schemes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SchemePlans">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Schemes">
+        <PropertyRef Name="SchemePlanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schemes_SchemeTypes">
+    <End Role="SchemeTypes" Type="Self.SchemeTypes" Multiplicity="1" />
+    <End Role="Schemes" Type="Self.Schemes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SchemeTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Schemes">
+        <PropertyRef Name="SchemeTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schemes_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Schemes" Type="Self.Schemes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Schemes">
+        <PropertyRef Name="FundManagerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="GetAllUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetCompleteFundDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fundId" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="GetFunds" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetNewFundEssentials" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Id" Type="bigint" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="Identifier" Type="nvarchar" MaxLength="20" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="ValidateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="nvarchar" Mode="In" />
+    <Parameter Name="password" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="BlackRockModelStoreContainer">
+    <EntitySet Name="Benchmarks" EntityType="Self.Benchmarks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InvestmentGoals" EntityType="Self.InvestmentGoals" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InvestmentHorizones" EntityType="Self.InvestmentHorizones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Navigations" EntityType="Self.Navigations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhysicalPaths" EntityType="Self.PhysicalPaths" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Risks" EntityType="Self.Risks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SchemeCategories" EntityType="Self.SchemeCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SchemePlans" EntityType="Self.SchemePlans" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Schemes" EntityType="Self.Schemes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SchemeTypes" EntityType="Self.SchemeTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transactions" EntityType="Self.Transactions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransactionTypes" EntityType="Self.TransactionTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Schemes_Benchmarks" Association="Self.FK_Schemes_Benchmarks">
+      <End Role="Benchmarks" EntitySet="Benchmarks" />
+      <End Role="Schemes" EntitySet="Schemes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schemes_InvestmentGoals" Association="Self.FK_Schemes_InvestmentGoals">
+      <End Role="InvestmentGoals" EntitySet="InvestmentGoals" />
+      <End Role="Schemes" EntitySet="Schemes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schemes_InvestmentHorizones" Association="Self.FK_Schemes_InvestmentHorizones">
+      <End Role="InvestmentHorizones" EntitySet="InvestmentHorizones" />
+      <End Role="Schemes" EntitySet="Schemes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schemes_Risks" Association="Self.FK_Schemes_Risks">
+      <End Role="Risks" EntitySet="Risks" />
+      <End Role="Schemes" EntitySet="Schemes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schemes_SchemeCategories" Association="Self.FK_Schemes_SchemeCategories">
+      <End Role="SchemeCategories" EntitySet="SchemeCategories" />
+      <End Role="Schemes" EntitySet="Schemes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schemes_SchemePlans" Association="Self.FK_Schemes_SchemePlans">
+      <End Role="SchemePlans" EntitySet="SchemePlans" />
+      <End Role="Schemes" EntitySet="Schemes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schemes_SchemeTypes" Association="Self.FK_Schemes_SchemeTypes">
+      <End Role="SchemeTypes" EntitySet="SchemeTypes" />
+      <End Role="Schemes" EntitySet="Schemes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schemes_Users" Association="Self.FK_Schemes_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Schemes" EntitySet="Schemes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

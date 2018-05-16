@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BlackRockModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Benchmark">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InvestmentGoal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InvestmentHorizone">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RiskLabel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RiskLabel1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SchemeCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SchemePlan">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Scheme">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Scheme1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SchemeTypeId" Type="Int64" Nullable="false" />
+    <Property Name="SchemeCategoryId" Type="Boolean" Nullable="false" />
+    <Property Name="SchemePlanId" Type="Int64" Nullable="false" />
+    <Property Name="RiskId" Type="Boolean" Nullable="false" />
+    <Property Name="BenchmarkId" Type="Int64" Nullable="false" />
+    <Property Name="HorizoneId" Type="Boolean" Nullable="false" />
+    <Property Name="GoalId" Type="Boolean" Nullable="false" />
+    <Property Name="MinLumpsumAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="MinSipAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="NAV" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ExpenseRatio" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AUM" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="InceptionDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EntryLoad" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ExitLoad" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ManagerId" Type="Int64" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsOpenEndedFund" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int64" Nullable="false" />
+    <Property Name="SchemeId" Type="Int64" Nullable="false" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Units" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TransactionType" Type="Int64" Nullable="false" />
+    <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="InvestmentType" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContactNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RegisteredOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastLoggedOn" Type="DateTime" Precision="3" />
+    <Property Name="RoleId" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SchemeType">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Title" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="BlackRockEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Benchmarks" EntityType="Self.Benchmark" />
+    <EntitySet Name="InvestmentGoals" EntityType="Self.InvestmentGoal" />
+    <EntitySet Name="InvestmentHorizones" EntityType="Self.InvestmentHorizone" />
+    <EntitySet Name="RiskLabels" EntityType="Self.RiskLabel" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="SchemeCategories" EntityType="Self.SchemeCategory" />
+    <EntitySet Name="SchemePlans" EntityType="Self.SchemePlan" />
+    <EntitySet Name="Schemes" EntityType="Self.Scheme" />
+    <EntitySet Name="Transactions" EntityType="Self.Transaction" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="SchemeTypes" EntityType="Self.SchemeType" />
+    <FunctionImport Name="GetAllUsers" />
+    <FunctionImport Name="ValidateUser">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Navigations" EntityType="BlackRockModel.Navigation" />
+    <EntitySet Name="TransactionTypes" EntityType="BlackRockModel.TransactionType" />
+  </EntityContainer>
+  <EntityType Name="Navigation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="FontAwesome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AssignedToUserRole" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TransactionType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

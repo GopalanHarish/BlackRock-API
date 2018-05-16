@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BlackRockModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Benchmarks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InvestmentGoals">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InvestmentHorizones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Navigations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Url" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="FontAwesome" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AssignedToUserRole" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RiskLabels">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RiskLabel" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SchemeCategories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SchemePlans">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Schemes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Scheme" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="SchemeTypeId" Type="bigint" Nullable="false" />
+    <Property Name="SchemeCategoryId" Type="bit" Nullable="false" />
+    <Property Name="SchemePlanId" Type="bigint" Nullable="false" />
+    <Property Name="RiskId" Type="bit" Nullable="false" />
+    <Property Name="BenchmarkId" Type="bigint" Nullable="false" />
+    <Property Name="HorizoneId" Type="bit" Nullable="false" />
+    <Property Name="GoalId" Type="bit" Nullable="false" />
+    <Property Name="MinLumpsumAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="MinSipAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="NAV" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ExpenseRatio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AUM" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="InceptionDate" Type="datetime" Nullable="false" />
+    <Property Name="EntryLoad" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ExitLoad" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ManagerId" Type="bigint" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="IsOpenEndedFund" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BlackRock.dbo.SchemeTypes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="SchemeTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Title" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Transactions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="SchemeId" Type="bigint" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Units" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TransactionType" Type="bigint" Nullable="false" />
+    <Property Name="TransactionDate" Type="datetime" Nullable="false" />
+    <Property Name="InvestmentType" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TransactionTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ContactNumber" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RegisteredOn" Type="datetime" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastLoggedOn" Type="datetime" />
+    <Property Name="RoleId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <Function Name="GetAllUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ValidateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="nvarchar" Mode="In" />
+    <Parameter Name="password" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="BlackRockModelStoreContainer">
+    <EntitySet Name="Benchmarks" EntityType="Self.Benchmarks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InvestmentGoals" EntityType="Self.InvestmentGoals" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InvestmentHorizones" EntityType="Self.InvestmentHorizones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Navigations" EntityType="Self.Navigations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RiskLabels" EntityType="Self.RiskLabels" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SchemeCategories" EntityType="Self.SchemeCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SchemePlans" EntityType="Self.SchemePlans" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Schemes" EntityType="Self.Schemes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transactions" EntityType="Self.Transactions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransactionTypes" EntityType="Self.TransactionTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SchemeTypes" EntityType="Self.SchemeTypes" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SchemeTypes].[Id] AS [Id], 
+    [SchemeTypes].[Title] AS [Title]
+    FROM [dbo].[SchemeTypes] AS [SchemeTypes]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

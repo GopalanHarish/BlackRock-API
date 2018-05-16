@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BlackRockModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="BlackRockEntities" annotation:LazyLoadingEnabled="false">
+    <FunctionImport Name="GetAllUsers" />
+    <FunctionImport Name="GetCompleteFundDetails" ReturnType="Collection(BlackRockModel.GetCompleteFundDetails_Result)">
+      <Parameter Name="fundId" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="GetFunds" ReturnType="Collection(BlackRockModel.GetFunds_Result)" />
+    <FunctionImport Name="GetNewFundEssentials" IsComposable="true" ReturnType="Collection(BlackRockModel.GetNewFundEssentials_Result)" />
+    <FunctionImport Name="ValidateUser">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Benchmarks" EntityType="BlackRockModel.Benchmark" />
+    <EntitySet Name="InvestmentGoals" EntityType="BlackRockModel.InvestmentGoal" />
+    <EntitySet Name="InvestmentHorizones" EntityType="BlackRockModel.InvestmentHorizone" />
+    <EntitySet Name="Navigations" EntityType="BlackRockModel.Navigation" />
+    <EntitySet Name="Risks" EntityType="BlackRockModel.Risk" />
+    <EntitySet Name="Roles" EntityType="BlackRockModel.Role" />
+    <EntitySet Name="SchemeCategories" EntityType="BlackRockModel.SchemeCategory" />
+    <EntitySet Name="SchemePlans" EntityType="BlackRockModel.SchemePlan" />
+    <EntitySet Name="Schemes" EntityType="BlackRockModel.Scheme" />
+    <EntitySet Name="SchemeTypes" EntityType="BlackRockModel.SchemeType" />
+    <EntitySet Name="Transactions" EntityType="BlackRockModel.Transaction" />
+    <EntitySet Name="TransactionTypes" EntityType="BlackRockModel.TransactionType" />
+    <EntitySet Name="Users" EntityType="BlackRockModel.User" />
+    <AssociationSet Name="FK_Schemes_Benchmarks" Association="BlackRockModel.FK_Schemes_Benchmarks">
+      <End Role="Benchmark" EntitySet="Benchmarks" />
+      <End Role="Scheme" EntitySet="Schemes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schemes_InvestmentGoals" Association="BlackRockModel.FK_Schemes_InvestmentGoals">
+      <End Role="InvestmentGoal" EntitySet="InvestmentGoals" />
+      <End Role="Scheme" EntitySet="Schemes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schemes_InvestmentHorizones" Association="BlackRockModel.FK_Schemes_InvestmentHorizones">
+      <End Role="InvestmentHorizone" EntitySet="InvestmentHorizones" />
+      <End Role="Scheme" EntitySet="Schemes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schemes_Risks" Association="BlackRockModel.FK_Schemes_Risks">
+      <End Role="Risk" EntitySet="Risks" />
+      <End Role="Scheme" EntitySet="Schemes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schemes_SchemeCategories" Association="BlackRockModel.FK_Schemes_SchemeCategories">
+      <End Role="SchemeCategory" EntitySet="SchemeCategories" />
+      <End Role="Scheme" EntitySet="Schemes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schemes_SchemePlans" Association="BlackRockModel.FK_Schemes_SchemePlans">
+      <End Role="SchemePlan" EntitySet="SchemePlans" />
+      <End Role="Scheme" EntitySet="Schemes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schemes_SchemeTypes" Association="BlackRockModel.FK_Schemes_SchemeTypes">
+      <End Role="SchemeType" EntitySet="SchemeTypes" />
+      <End Role="Scheme" EntitySet="Schemes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schemes_Users" Association="BlackRockModel.FK_Schemes_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Scheme" EntitySet="Schemes" />
+    </AssociationSet>
+    <EntitySet Name="PhysicalPaths" EntityType="BlackRockModel.PhysicalPath" />
+  </EntityContainer>
+  <ComplexType Name="GetCompleteFundDetails_Result">
+    <Property Type="Int64" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="Type" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Category" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Plan" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Benchmark" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="Investment_Horizone" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Goal" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="Lumpsum" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="SIP" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Asset_Under_Management" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="DateTime" Name="Inception_Date" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Fund_Manager" Nullable="false" MaxLength="101" />
+    <Property Type="String" Name="Bio" Nullable="true" MaxLength="4000" />
+    <Property Type="Decimal" Name="Expense_Ratio" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Entry_Load" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Exit_Load" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="4000" />
+  </ComplexType>
+  <ComplexType Name="GetFunds_Result">
+    <Property Type="Int64" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="Type" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Category" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Plan" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Benchmark" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="Investment_Horizone" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Goal" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="Lumpsum" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="SIP" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Asset_Under_Management" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="Inception_Date" Nullable="true" MaxLength="15" />
+    <Property Type="Int64" Name="FundManagerId" Nullable="false" />
+    <Property Type="String" Name="Fund_Manager" Nullable="false" MaxLength="101" />
+    <Property Type="Decimal" Name="Expense_Ratio" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Entry_Load" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Exit_Load" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="4000" />
+  </ComplexType>
+  <ComplexType Name="GetNewFundEssentials_Result">
+    <Property Type="Int64" Name="Id" Nullable="true" />
+    <Property Type="String" Name="Title" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Identifier" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <EntityType Name="Benchmark">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Schemes" Relationship="BlackRockModel.FK_Schemes_Benchmarks" FromRole="Benchmark" ToRole="Scheme" />
+  </EntityType>
+  <EntityType Name="InvestmentGoal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Schemes" Relationship="BlackRockModel.FK_Schemes_InvestmentGoals" FromRole="InvestmentGoal" ToRole="Scheme" />
+  </EntityType>
+  <EntityType Name="InvestmentHorizone">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Schemes" Relationship="BlackRockModel.FK_Schemes_InvestmentHorizones" FromRole="InvestmentHorizone" ToRole="Scheme" />
+  </EntityType>
+  <EntityType Name="Navigation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="FontAwesome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AssignedToUserRole" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Risk">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RiskLabel" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Schemes" Relationship="BlackRockModel.FK_Schemes_Risks" FromRole="Risk" ToRole="Scheme" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="SchemeCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Schemes" Relationship="BlackRockModel.FK_Schemes_SchemeCategories" FromRole="SchemeCategory" ToRole="Scheme" />
+  </EntityType>
+  <EntityType Name="SchemePlan">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Schemes" Relationship="BlackRockModel.FK_Schemes_SchemePlans" FromRole="SchemePlan" ToRole="Scheme" />
+  </EntityType>
+  <EntityType Name="Scheme">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SchemeTypeId" Type="Int64" Nullable="false" />
+    <Property Name="SchemeCategoryId" Type="Int64" Nullable="false" />
+    <Property Name="SchemePlanId" Type="Int64" Nullable="false" />
+    <Property Name="RiskId" Type="Int64" Nullable="false" />
+    <Property Name="BenchmarkId" Type="Int64" Nullable="false" />
+    <Property Name="HorizoneId" Type="Int64" Nullable="false" />
+    <Property Name="GoalId" Type="Int64" Nullable="false" />
+    <Property Name="MinLumpsumAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="MinSipAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="ExpenseRatio" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="AUM" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="InceptionDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EntryLoad" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="ExitLoad" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="FundManagerId" Type="Int64" Nullable="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="IsOpenEndedFund" Type="Boolean" Nullable="false" />
+    <Property Name="QuandlCode" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="isGrowth" Type="Boolean" Nullable="false" />
+    <Property Name="isDividend" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Benchmark" Relationship="BlackRockModel.FK_Schemes_Benchmarks" FromRole="Scheme" ToRole="Benchmark" />
+    <NavigationProperty Name="InvestmentGoal" Relationship="BlackRockModel.FK_Schemes_InvestmentGoals" FromRole="Scheme" ToRole="InvestmentGoal" />
+    <NavigationProperty Name="InvestmentHorizone" Relationship="BlackRockModel.FK_Schemes_InvestmentHorizones" FromRole="Scheme" ToRole="InvestmentHorizone" />
+    <NavigationProperty Name="Risk" Relationship="BlackRockModel.FK_Schemes_Risks" FromRole="Scheme" ToRole="Risk" />
+    <NavigationProperty Name="SchemeCategory" Relationship="BlackRockModel.FK_Schemes_SchemeCategories" FromRole="Scheme" ToRole="SchemeCategory" />
+    <NavigationProperty Name="SchemePlan" Relationship="BlackRockModel.FK_Schemes_SchemePlans" FromRole="Scheme" ToRole="SchemePlan" />
+    <NavigationProperty Name="SchemeType" Relationship="BlackRockModel.FK_Schemes_SchemeTypes" FromRole="Scheme" ToRole="SchemeType" />
+    <NavigationProperty Name="User" Relationship="BlackRockModel.FK_Schemes_Users" FromRole="Scheme" ToRole="User" />
+    <Property Name="CreatedBy" Type="Int64" Nullable="false" />
+    <Property Name="ManagingSince" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="SchemeType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Schemes" Relationship="BlackRockModel.FK_Schemes_SchemeTypes" FromRole="SchemeType" ToRole="Scheme" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int64" Nullable="false" />
+    <Property Name="SchemeId" Type="Int64" Nullable="false" />
+    <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Units" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="TransactionType" Type="Int64" Nullable="false" />
+    <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="InvestmentType" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TransactionType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactNumber" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RegisteredOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastLoggedOn" Type="DateTime" Precision="3" />
+    <Property Name="RoleId" Type="Int64" Nullable="false" />
+    <Property Name="Bio" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Schemes" Relationship="BlackRockModel.FK_Schemes_Users" FromRole="User" ToRole="Scheme" />
+    <Property Name="ImageUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Schemes_Benchmarks">
+    <End Type="BlackRockModel.Benchmark" Role="Benchmark" Multiplicity="1" />
+    <End Type="BlackRockModel.Scheme" Role="Scheme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Benchmark">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Scheme">
+        <PropertyRef Name="BenchmarkId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schemes_InvestmentGoals">
+    <End Type="BlackRockModel.InvestmentGoal" Role="InvestmentGoal" Multiplicity="1" />
+    <End Type="BlackRockModel.Scheme" Role="Scheme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InvestmentGoal">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Scheme">
+        <PropertyRef Name="GoalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schemes_InvestmentHorizones">
+    <End Type="BlackRockModel.InvestmentHorizone" Role="InvestmentHorizone" Multiplicity="1" />
+    <End Type="BlackRockModel.Scheme" Role="Scheme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InvestmentHorizone">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Scheme">
+        <PropertyRef Name="HorizoneId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schemes_Risks">
+    <End Type="BlackRockModel.Risk" Role="Risk" Multiplicity="1" />
+    <End Type="BlackRockModel.Scheme" Role="Scheme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Risk">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Scheme">
+        <PropertyRef Name="RiskId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schemes_SchemeCategories">
+    <End Type="BlackRockModel.SchemeCategory" Role="SchemeCategory" Multiplicity="1" />
+    <End Type="BlackRockModel.Scheme" Role="Scheme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SchemeCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Scheme">
+        <PropertyRef Name="SchemeCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schemes_SchemePlans">
+    <End Type="BlackRockModel.SchemePlan" Role="SchemePlan" Multiplicity="1" />
+    <End Type="BlackRockModel.Scheme" Role="Scheme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SchemePlan">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Scheme">
+        <PropertyRef Name="SchemePlanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schemes_SchemeTypes">
+    <End Type="BlackRockModel.SchemeType" Role="SchemeType" Multiplicity="1" />
+    <End Type="BlackRockModel.Scheme" Role="Scheme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SchemeType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Scheme">
+        <PropertyRef Name="SchemeTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schemes_Users">
+    <End Type="BlackRockModel.User" Role="User" Multiplicity="1" />
+    <End Type="BlackRockModel.Scheme" Role="Scheme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Scheme">
+        <PropertyRef Name="FundManagerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PhysicalPath">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BaseUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Identifier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DefaultImageUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

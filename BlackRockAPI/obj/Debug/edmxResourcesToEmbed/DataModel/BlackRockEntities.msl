@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BlackRockModelStoreContainer" CdmEntityContainer="BlackRockEntities">
+    <EntitySetMapping Name="Benchmarks">
+      <EntityTypeMapping TypeName="BlackRockModel.Benchmark">
+        <MappingFragment StoreEntitySet="Benchmarks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InvestmentGoals">
+      <EntityTypeMapping TypeName="BlackRockModel.InvestmentGoal">
+        <MappingFragment StoreEntitySet="InvestmentGoals">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InvestmentHorizones">
+      <EntityTypeMapping TypeName="BlackRockModel.InvestmentHorizone">
+        <MappingFragment StoreEntitySet="InvestmentHorizones">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RiskLabels">
+      <EntityTypeMapping TypeName="BlackRockModel.RiskLabel">
+        <MappingFragment StoreEntitySet="RiskLabels">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RiskLabel1" ColumnName="RiskLabel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="BlackRockModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SchemeCategories">
+      <EntityTypeMapping TypeName="BlackRockModel.SchemeCategory">
+        <MappingFragment StoreEntitySet="SchemeCategories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SchemePlans">
+      <EntityTypeMapping TypeName="BlackRockModel.SchemePlan">
+        <MappingFragment StoreEntitySet="SchemePlans">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schemes">
+      <EntityTypeMapping TypeName="BlackRockModel.Scheme">
+        <MappingFragment StoreEntitySet="Schemes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Scheme1" ColumnName="Scheme" />
+          <ScalarProperty Name="SchemeTypeId" ColumnName="SchemeTypeId" />
+          <ScalarProperty Name="SchemeCategoryId" ColumnName="SchemeCategoryId" />
+          <ScalarProperty Name="SchemePlanId" ColumnName="SchemePlanId" />
+          <ScalarProperty Name="RiskId" ColumnName="RiskId" />
+          <ScalarProperty Name="BenchmarkId" ColumnName="BenchmarkId" />
+          <ScalarProperty Name="HorizoneId" ColumnName="HorizoneId" />
+          <ScalarProperty Name="GoalId" ColumnName="GoalId" />
+          <ScalarProperty Name="MinLumpsumAmount" ColumnName="MinLumpsumAmount" />
+          <ScalarProperty Name="MinSipAmount" ColumnName="MinSipAmount" />
+          <ScalarProperty Name="NAV" ColumnName="NAV" />
+          <ScalarProperty Name="ExpenseRatio" ColumnName="ExpenseRatio" />
+          <ScalarProperty Name="AUM" ColumnName="AUM" />
+          <ScalarProperty Name="InceptionDate" ColumnName="InceptionDate" />
+          <ScalarProperty Name="EntryLoad" ColumnName="EntryLoad" />
+          <ScalarProperty Name="ExitLoad" ColumnName="ExitLoad" />
+          <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsOpenEndedFund" ColumnName="IsOpenEndedFund" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transactions">
+      <EntityTypeMapping TypeName="BlackRockModel.Transaction">
+        <MappingFragment StoreEntitySet="Transactions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="SchemeId" ColumnName="SchemeId" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Units" ColumnName="Units" />
+          <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+          <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+          <ScalarProperty Name="InvestmentType" ColumnName="InvestmentType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="BlackRockModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="RegisteredOn" ColumnName="RegisteredOn" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="LastLoggedOn" ColumnName="LastLoggedOn" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SchemeTypes">
+      <EntityTypeMapping TypeName="BlackRockModel.SchemeType">
+        <MappingFragment StoreEntitySet="SchemeTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetAllUsers" FunctionName="BlackRockModel.Store.GetAllUsers" />
+    <FunctionImportMapping FunctionImportName="ValidateUser" FunctionName="BlackRockModel.Store.ValidateUser" />
+    <EntitySetMapping Name="Navigations">
+      <EntityTypeMapping TypeName="BlackRockModel.Navigation">
+        <MappingFragment StoreEntitySet="Navigations">
+          <ScalarProperty Name="AssignedToUserRole" ColumnName="AssignedToUserRole" />
+          <ScalarProperty Name="FontAwesome" ColumnName="FontAwesome" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionTypes">
+      <EntityTypeMapping TypeName="BlackRockModel.TransactionType">
+        <MappingFragment StoreEntitySet="TransactionTypes">
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
